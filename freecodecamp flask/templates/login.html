@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+	<h1 style="text-align: center;">Login Page</h1>
+
+	<div class="form">
+		<form method="POST">
+			<label>Username:</label>
+			<br>
+			<input type="text" name="username" id="user_name">
+			<br>
+			<br>
+			<label>Password:</label>
+			<br>
+			<input type="text" name="password" id="user_password">
+			<br>
+			<input type="Submit" value="Login">
+		</form>
+	</div>
+	
+</div>
+{% endblock %}
