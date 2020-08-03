@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class="flashes">
+				{% for message in messages %}
+					<h3>
+						<strong>{{ message }}</strong>
+					</h3>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+	{% block head %}{% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %} 
+</body>
+</html>

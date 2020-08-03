@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<h1>Hello {{ user.username }}!</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="content">
+		{% if user.all_tasks|length < 1 %}
+			<h1>Create Your First Task Below!</h1>
+		{% else %}
+			<h1 style='text-align:center'>{{ user.username.upper() }}'S TASK MASTER</h1>
+			<table>
+				<tr>
+					<th>Task</th>
+					<th>Date Added</th>
+					<th>Actions</th>
+				</tr>
+				{% for task in user.all_tasks %}
+
+					<tr>
+						<td>{{ task.content }}</td>
+						<td>{{ task.date_created.date() }}</td>
+						<td>
+							<a href="/{{ user.id }}/{{ task.id }}/delete">Delete</a>
+							<br>
+							<a href="/{{ user.id }}/{{ task.id }}/update">Update</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		{% endif %}
+
+		<div class="form"></div>
+			<form action="/{{ user.id }}/tasks", method="POST">
+				<input type="text" name="new_content" id="content">
+				<input type="Submit" value="Add Task">
+			</form>
+		</div>
+	</div>
+{% endblock %}
